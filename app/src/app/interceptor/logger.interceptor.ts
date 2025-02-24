@@ -1,5 +1,5 @@
-import { LoggerService } from './../../context/common/infrastructure/services/logger.service';
-import { LogTypeEnum } from './../../context/common/domain/enum/log-type.enum';
+import { LoggerService } from '../../context/common/infrastructure/services/logger.service';
+import { LogTypeEnum } from '../../context/common/domain/enum/log-type.enum';
 import { type CallHandler, type ExecutionContext, Injectable, type NestInterceptor } from '@nestjs/common'
 import { type Observable, tap } from 'rxjs'
 

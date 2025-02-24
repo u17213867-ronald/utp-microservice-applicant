@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import * as crypto from 'crypto';
-import { PasswordServiceRepository } from './../../domain/interfaces/password.service.repository';
+import { PasswordServiceRepository } from '../../domain/interfaces/password.service.repository';
 
 @Injectable()
 export class PasswordService implements PasswordServiceRepository {

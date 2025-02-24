@@ -1,7 +1,7 @@
 import { Injectable, NestInterceptor, CallHandler, ExecutionContext, HttpException, HttpStatus } from '@nestjs/common'
 import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
-import { ResponseDto } from './../../context/common/application/dto/response'
+import { ResponseDto } from '../../context/common/application/dto/response'
 
 @Injectable()
 export class ResponseInterceptor implements NestInterceptor {

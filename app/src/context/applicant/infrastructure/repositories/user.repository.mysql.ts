@@ -1,10 +1,10 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
 import { Repository, Sequelize } from 'sequelize-typescript';
 import { UserModel } from '../orm/model/user.model';
-import { UserInterface } from '../../domain/interface/user.interface';
+import { CustomException } from './../../../common/application/exceptions/custom.exception';
+import { UserInterface } from '../../domain/repositories/user.interface';
 import { UserRepository } from '../../domain/repositories/user.repository';
-import { CustomException } from './../../../common/infrastructure/exceptions/custom.exception';
-import * as bcrypt from "bcrypt";
+
 
 @Injectable()
 export class UserMysqlRepository implements UserRepository{

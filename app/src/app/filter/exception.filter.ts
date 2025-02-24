@@ -1,5 +1,5 @@
-import { LogTypeEnum } from './../../context/common/domain/enum/log-type.enum';
-import { LoggerService } from './../../context/common/infrastructure/services/logger.service';
+import { LogTypeEnum } from '../../context/common/domain/enum/log-type.enum';
+import { LoggerService } from '../../context/common/infrastructure/services/logger.service';
 import { ArgumentsHost, Catch, ExceptionFilter, HttpException, HttpStatus } from '@nestjs/common'
 
 @Catch()

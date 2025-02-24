@@ -5,7 +5,7 @@
 ## APP VARS ##
 OWNER             = utp
 SERVICE_TYPE      = microservice
-SERVICE_NAME      = user
+SERVICE_NAME      = applicant
 VERSION      	  = v1
 APP_NAME          = $(SERVICE_TYPE)-$(SERVICE_NAME)
 DOCKER_NETWORK    ?= utp_network

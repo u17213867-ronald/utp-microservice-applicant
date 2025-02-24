@@ -1,4 +1,4 @@
-create-module: ##@ddd Uso: make create-module MODULE_NAME=advertisement
+create-module: ##@ddd Uso: make create-module MODULE_NAME=applicant
 	@echo "Creando la estructura del módulo DDD para TypeScript..."
 	@mkdir -p $(PWD)/$(APP_DIR)/src/context/$(MODULE_NAME)/domain/
 	@mkdir -p $(PWD)/$(APP_DIR)/src/context/$(MODULE_NAME)/domain/services/

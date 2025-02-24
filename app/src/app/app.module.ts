@@ -1,17 +1,18 @@
 import { Module } from '@nestjs/common'
-import { UserController } from './rest/user.controller'
-import { CommonModule } from 'src/context/common/common.module'
-import { ConfigurationModel } from "src/context/common/infrastructure/models/configuration.model";
+import { CommonModule } from './../context/common/common.module'
+import { ConfigurationModel } from "./../context/common/infrastructure/models/configuration.model";
 import { ConfigModule } from '@nestjs/config';
-import { UserModule } from './../context/user/user.module';
+import { UserController } from './rest/heald.controller';
+import { ApplicantController } from './rest/applicant.controller';
+import { ApplicantModule } from './../context/applicant/applicant.module';
 
 
 export default () => ({
     DB_MODELS: [ConfigurationModel],
   });
 @Module({
-  imports: [CommonModule, UserModule , ConfigModule.forRoot({ isGlobal: true })],
-  controllers: [UserController],
+  imports: [CommonModule, ApplicantModule, ConfigModule.forRoot({ isGlobal: true })],
+  controllers: [UserController,ApplicantController],
   providers: [],
 })
 export class AppModule {}
