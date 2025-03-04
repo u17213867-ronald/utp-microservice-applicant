@@ -11,3 +11,7 @@ export interface ApplicantDto {
     status?: boolean
   }
   
+
+  export interface FilterApplicantDto {
+    userId: number
+  }

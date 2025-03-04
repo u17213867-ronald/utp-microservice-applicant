@@ -2,8 +2,9 @@ import { UserModel } from './../../infrastructure/orm/model/user.model';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { ApplicantRepository } from '../../domain/repositories/applicant.repository';
 import { ResponseDto } from './../../../common/application/dto/response';
-import { ApplicantDto } from '../dto/applicant.dto';
+import { ApplicantDto, FilterApplicantDto } from '../dto/applicant.dto';
 import { UserRepository } from '../../domain/repositories/user.repository';
+import { AllApplicantDto } from 'src/app/input/create-applicant.dto';
 
 @Injectable()
 export class ApplicantService {
@@ -34,6 +35,15 @@ export class GetApplicantService {
 }
 
 @Injectable()
+export class UserApplicantService {
+  constructor(private readonly applicantRepository: ApplicantRepository) {}
+  async execute(userid: number): Promise<any> {
+    const response = await this.applicantRepository.findByUserId(userid)
+    return new ResponseDto(response)
+  }
+}
+
+@Injectable()
 export class UpdateApplicantService {
   constructor(
     private readonly applicantRepository: ApplicantRepository,
@@ -43,7 +53,7 @@ export class UpdateApplicantService {
   async execute(id: number, updateApplicantDto: ApplicantDto): Promise<any> {
 
     const applicant = await this.applicantRepository.findById(id)
-    if (applicant) {
+    if (!applicant) {
       throw new UnauthorizedException('el postulante no existe');
     }
     

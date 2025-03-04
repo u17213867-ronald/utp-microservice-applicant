@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import { UserController } from './rest/heald.controller';
 import { ApplicantController } from './rest/applicant.controller';
 import { ApplicantModule } from './../context/applicant/applicant.module';
+import { ApplicationController } from './rest/application.controller';
 
 
 export default () => ({
@@ -12,7 +13,7 @@ export default () => ({
   });
 @Module({
   imports: [CommonModule, ApplicantModule, ConfigModule.forRoot({ isGlobal: true })],
-  controllers: [UserController,ApplicantController],
+  controllers: [UserController,ApplicantController, ApplicationController],
   providers: [],
 })
 export class AppModule {}

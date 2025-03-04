@@ -55,3 +55,8 @@ import { PartialType } from '@nestjs/swagger';
   }
   
   export class UpdateApplicantDto extends PartialType(CreateApplicantDto) {}
+  export class AllApplicantDto  {
+    @IsNotEmpty({ message: 'El ID de usuario es obligatorio' })
+    userId?: number;
+
+  }

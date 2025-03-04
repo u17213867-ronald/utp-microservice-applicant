@@ -1,3 +1,4 @@
+import { UserApplicantService } from './../../context/applicant/application/services/applicant.service';
 import {
     Controller,
     Post,
@@ -6,6 +7,7 @@ import {
     Param,
     Body,
     ParseIntPipe,
+    Query,
   } from '@nestjs/common';
 
   import {
@@ -16,7 +18,7 @@ import {
     ApiBody,
   } from '@nestjs/swagger';
 
-import { CreateApplicantDto, UpdateApplicantDto } from '../input/create-applicant.dto';
+import { AllApplicantDto, CreateApplicantDto, UpdateApplicantDto } from '../input/create-applicant.dto';
 import { ApplicantService, GetApplicantService, UpdateApplicantService } from '../../context/applicant/application/services/applicant.service';
 import { ResponseDto } from './../../context/common/application/dto/response';
   
@@ -26,7 +28,9 @@ import { ResponseDto } from './../../context/common/application/dto/response';
     constructor(
         private readonly applicantService: ApplicantService,
         private readonly getApplicantService: GetApplicantService,
-        private readonly updateApplicantService: UpdateApplicantService
+        private readonly updateApplicantService: UpdateApplicantService,
+        private readonly userApplicantService: UserApplicantService
+
     ) {}
   
     @Post()
@@ -46,6 +50,27 @@ import { ResponseDto } from './../../context/common/application/dto/response';
     ): Promise<any> {
       return await this.applicantService.execute(createApplicantDto);
     }
+
+    @Get('user/:userId')
+    @ApiOperation({ summary: 'Obtener un solicitante por userId' })
+    @ApiParam({
+      name: 'userId',
+      description: 'ID del solicitante a obtener',
+      example: 1,
+    })
+    @ApiResponse({
+      status: 200,
+      description: 'Detalles del solicitante.',
+      type: ResponseDto,
+    })
+    @ApiResponse({
+      status: 404,
+      description: 'Solicitante no encontrado.',
+    })
+    async findByuserId(@Param('userId', ParseIntPipe) userId: number): Promise<any> {
+      return await this.userApplicantService.execute(userId);
+    }
+
   
     @Get(':id')
     @ApiOperation({ summary: 'Obtener un solicitante por ID' })
